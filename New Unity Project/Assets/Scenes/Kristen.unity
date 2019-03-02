@@ -233,7 +233,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &537758065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -418,8 +418,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
+  spriteRenderer: {fileID: 886827678}
+  snowMoveSpeed: 3
+  iceSlideSpeed: 7
   maxSpeed: 7
   jumpTakeOffSpeed: 5
+  move: {x: 0, y: 0}
 --- !u!50 &886827681
 Rigidbody2D:
   serializedVersion: 4
@@ -522,7 +526,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &1028270465
 SpriteRenderer:
   m_ObjectHideFlags: 0

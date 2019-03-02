@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class PlayerController : PhysicsObject
 {
-
+    private SpriteRenderer spriteRenderer;
     public float snowMoveSpeed = 3;
     public float iceSlideSpeed = 7;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     public Vector2 move;
 
-    //private SpriteRenderer spriteRenderer;
+    private float speed;
+
+
+    public bool flipSprite;
+
+    //public bool shouldFlip = false;
+
     //private Animator animator;
 
     // Use this for initialization
     void Awake()
     {
-       // spriteRenderer = GetComponent<SpriteRenderer>();
-       // animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = false;
+        speed = maxSpeed;
+        // animator = GetComponent<Animator>();
     }
 
     protected override void ComputeVelocity()
@@ -38,29 +46,39 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
-        /*
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
+        if(move.x > 0f)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            flipSprite = false;
         }
-
+        else if (move.x < 0f)
+        {
+            flipSprite = true;
+        }
+        spriteRenderer.flipX = flipSprite;
+        /*
         animator.SetBool("grounded", grounded);
         animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
         */
-        targetVelocity = move * maxSpeed;
+        targetVelocity = move * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Snow")
         {
-            maxSpeed = 3;
+            speed = snowMoveSpeed;
+            rb2d.angularVelocity = 0f;
+            rb2d.velocity = Vector2.zero;
         }
         if (collision.gameObject.tag == "Ice")
         {
             float iceMove = move.x;
-            rb2d.AddForce(new Vector2(iceMove * iceSlideSpeed, rb2d.velocity.y));
+            rb2d.AddForce(new Vector2(iceMove * iceSlideSpeed * 2, rb2d.velocity.y));
+        }
+        else
+        {
+            rb2d.angularVelocity = 0f;
+            rb2d.velocity = Vector2.zero;
         }
     }
 
@@ -69,7 +87,11 @@ public class PlayerController : PhysicsObject
         if (collision.gameObject.tag == "Ice")
         {
             float iceMove = move.x;
-            rb2d.AddForce(new Vector2(iceMove * iceSlideSpeed, rb2d.velocity.y));
+            rb2d.AddForce(new Vector2(iceMove * iceSlideSpeed * 2, rb2d.velocity.y));
+        }
+        if (collision.gameObject.tag == "Snow")
+        {
+            speed = snowMoveSpeed;
         }
     }
 
@@ -77,71 +99,12 @@ public class PlayerController : PhysicsObject
     {
         if(collision.gameObject.tag == "Snow")
         {  
-            maxSpeed = 7;
+            speed = maxSpeed;
         }
         if (collision.gameObject.tag == "Ice")
         {
-            Debug.Log("Leaving Ice");
-            rb2d.angularVelocity = 0f;
-            rb2d.velocity = Vector2.zero;
+            Debug.Log("Ice Exit");
+            
         }
     }
-
-    /*
-    public float speed = 5;
-
-    public Vector2 newPos;
-    public Vector2 currPos;
-    public Vector2 myPos;
-    public float fraction;
-    public float journeyLength;
-    public float startTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    { 
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MoveLeft();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            MoveRight();
-        }
-
-        if (fraction < 1)
-        {
-            fraction = ((Time.time - startTime) * speed) / journeyLength;
-            this.transform.position = Vector2.Lerp(currPos, newPos, fraction);
-
-        }
-    }
-
-
-
-    void MoveLeft()
-    {
-        currPos = this.transform.position;
-        newPos = new Vector2(this.transform.position.x - speed, this.transform.position.y);
-        journeyLength = Vector2.Distance(currPos, newPos);
-        startTime = Time.time;
-        fraction = 0;
-    }
-
-    void MoveRight()
-    {
-        currPos = transform.position;
-        newPos = new Vector2(this.transform.position.x + speed, this.transform.position.y);
-        journeyLength = Vector2.Distance(currPos, newPos);
-        startTime = Time.time;
-        fraction = 0;
-    }
-
-    */
-
 }
