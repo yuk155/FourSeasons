@@ -1011,8 +1011,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Four Seasons
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6113cec29102e74448d41e045f2eca1d, type: 2}
-  m_sharedMaterial: {fileID: 21211060042695058, guid: 6113cec29102e74448d41e045f2eca1d,
+  m_fontAsset: {fileID: 11400000, guid: dbf3e1c9855022c4dac3a6689ff4b6f0, type: 2}
+  m_sharedMaterial: {fileID: 21598808013491888, guid: dbf3e1c9855022c4dac3a6689ff4b6f0,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
