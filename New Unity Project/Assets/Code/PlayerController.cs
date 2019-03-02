@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerController : PhysicsObject
 {
-
+    public SpriteRenderer spriteRenderer;
     public float snowMoveSpeed = 3;
     public float iceSlideSpeed = 7;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     public Vector2 move;
 
-    //private SpriteRenderer spriteRenderer;
+    
     //private Animator animator;
 
     // Use this for initialization
@@ -38,13 +38,13 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
-        /*
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+        
+        bool flipSprite = (spriteRenderer.flipX ? (move.x < 0.01f): (move.x > 0.01f));
         if (flipSprite)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
-
+        /*
         animator.SetBool("grounded", grounded);
         animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
         */
