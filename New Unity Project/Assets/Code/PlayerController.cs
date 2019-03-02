@@ -54,6 +54,12 @@ public class PlayerController : PhysicsObject
         {
             maxSpeed = 3;
         }
+
+        if(collision.gameObject.tag == "Ice")
+        {
+            Debug.Log("Ice object collision");
+            collision.gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 0;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -61,6 +67,10 @@ public class PlayerController : PhysicsObject
         if(collision.gameObject.tag == "Snow")
         {  
             maxSpeed = 7;
+        }
+        if (collision.gameObject.tag == "Ice")
+        {
+            collision.gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 1;
         }
     }
 
