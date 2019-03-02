@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StoryBoards : MonoBehaviour
@@ -11,6 +12,13 @@ public class StoryBoards : MonoBehaviour
     float waitTime = 2.5f;
     float counter = 0;
     int panel = 1;
+    Color child = new Color(0.035f, 0.608f, 0.678f);
+    Color parent = new Color(0.039f, 0.478f, 0.063f);
+    public AudioClip AClip;
+    public AudioSource ASource;
+    public int childfont = 30;
+    public int childsadfont = 24;
+    public int parentfont = 36;
 
     private void Start()
     {
@@ -19,32 +27,45 @@ public class StoryBoards : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown && panel == 4)
+        if (Input.anyKeyDown && panel == 5)
         {
+            ASource.clip = AClip;
+            ASource.Play();
+            //Play the first scene
+            //SceneManager.LoadScene();
+        }
+        else if (Input.anyKeyDown && panel == 4)
+        {
+            TextM.color = child;
+            TextM.fontSize = childsadfont;
             TextM.text = "I don't want a new teddy";
+
             panel += 1;
-            
+
         }
         else if (Input.anyKeyDown && panel == 3)
         {
+            TextM.color = parent;
+            TextM.fontSize = parentfont;
             TextM.text = "We can buy you a new Teddy";
             panel += 1;
 
         }
         else if (Input.anyKeyDown && panel == 2)
         {
-            TextM.text = "We Have to Go!";
+            TextM.color = parent;
+            TextM.fontSize = parentfont;
+            TextM.text = "We have to Go!";
             panel += 1;
         }
         else if (Input.anyKeyDown && panel == 1)
         {
+            TextM.color = child;
+            TextM.fontSize = childfont;
             TextM.text = "I can't find Teddy";
             panel += 1;
         }
     }
-
-    //("We can buy you a new Teddy");
-    //("I don't want a new Teddy!");
 
     private void FadeInOut(string PrintText)
     {

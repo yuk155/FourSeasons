@@ -19,4 +19,9 @@ public class MainMenuButton : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void goToStoryBoards()
+    {
+        SceneManager.LoadScene("StoryBoards");
+    }
 }
