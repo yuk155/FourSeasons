@@ -33,13 +33,13 @@ public class StoryBoards : MonoBehaviour
             ASource.Play();
             //Play the first scene
             //SceneManager.LoadScene();
+            panel += 1;
         }
         else if (Input.anyKeyDown && panel == 4)
         {
             TextM.color = child;
             TextM.fontSize = childsadfont;
             TextM.text = "I don't want a new teddy";
-
             panel += 1;
 
         }
