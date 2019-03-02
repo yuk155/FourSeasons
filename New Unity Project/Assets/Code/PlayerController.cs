@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerController : PhysicsObject
 {
 
+    public float snowMoveSpeed = 3;
+    public float iceSlideSpeed = 7;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
+    public Vector2 move;
 
     //private SpriteRenderer spriteRenderer;
     //private Animator animator;
@@ -20,7 +23,7 @@ public class PlayerController : PhysicsObject
 
     protected override void ComputeVelocity()
     {
-        Vector2 move = Vector2.zero;
+        move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
 
@@ -54,11 +57,19 @@ public class PlayerController : PhysicsObject
         {
             maxSpeed = 3;
         }
-
-        if(collision.gameObject.tag == "Ice")
+        if (collision.gameObject.tag == "Ice")
         {
-            Debug.Log("Ice object collision");
-            collision.gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 0;
+            float iceMove = move.x;
+            rb2d.AddForce(new Vector2(iceMove * iceSlideSpeed, rb2d.velocity.y));
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ice")
+        {
+            float iceMove = move.x;
+            rb2d.AddForce(new Vector2(iceMove * iceSlideSpeed, rb2d.velocity.y));
         }
     }
 
@@ -70,7 +81,9 @@ public class PlayerController : PhysicsObject
         }
         if (collision.gameObject.tag == "Ice")
         {
-            collision.gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 1;
+            Debug.Log("Leaving Ice");
+            rb2d.angularVelocity = 0f;
+            rb2d.velocity = Vector2.zero;
         }
     }
 
