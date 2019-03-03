@@ -32,7 +32,7 @@ public class StoryBoards : MonoBehaviour
         
         if (Input.anyKeyDown && panel == 5)
         {
-             float musicVolume;
+            float musicVolume;
             audioMixer.GetFloat("MusicVolume", out musicVolume);
             Debug.Log(musicVolume);
             Debug.Log(1+(musicVolume/80));
