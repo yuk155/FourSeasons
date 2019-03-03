@@ -11,18 +11,18 @@ public class ParallaxCamera : MonoBehaviour
     [Tooltip("Smoothness - needs to be greater than 0")]
     public float smoothing = 10f;
 
-    private Transform cam;
+    public Transform player;
     private Vector3 previousCamPos;
 
-    void Awake()
+   /* void Awake()
     {
         cam = Camera.main.transform;
     }
-
+    */
     // Start is called before the first frame update
     void Start()
     {
-        previousCamPos = cam.position;
+        previousCamPos = player.position;
 
         parallaxScales = new float[backgrounds.Length];
 
@@ -37,14 +37,14 @@ public class ParallaxCamera : MonoBehaviour
     {
         for (int i = 0; i < backgrounds.Length; i++)
         {
-            float parallax = (previousCamPos.x - cam.position.x) * parallaxScales[i];
+            float parallax = (previousCamPos.x - player.position.x) * parallaxScales[i];
 
-            float backgroundTargetPosX = backgrounds[i].position.x + parallax;
+            float backgroundTargetPosX = backgrounds[i].position.x - parallax;
 
             Vector3 backgroundTargetPos = new Vector3(backgroundTargetPosX, backgrounds[i].position.y, backgrounds[i].position.z);
 
             backgrounds[i].position = Vector3.Lerp(backgrounds[i].position, backgroundTargetPos, smoothing * Time.deltaTime);
         }
-        previousCamPos = cam.position;
+        previousCamPos = player.position;
     }
 }

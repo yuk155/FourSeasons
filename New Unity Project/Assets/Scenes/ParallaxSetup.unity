@@ -2090,5 +2090,10 @@ PrefabInstance:
       propertyPath: backgrounds.Array.data[5]
       value: 
       objectReference: {fileID: 147240061}
+    - target: {fileID: 8410470145862560709, guid: f0126fd877b39fe4fa6548554f38c1c0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 299558884}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0126fd877b39fe4fa6548554f38c1c0, type: 3}
