@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : PhysicsObject
 {
+    Animator anim; 
     private SpriteRenderer spriteRenderer;
     public float waterMoveSpeed = 4;
     public float snowMoveSpeed = 3;
@@ -20,6 +21,8 @@ public class PlayerController : PhysicsObject
     private WaterBlock waterBlock;
     enum Direction { North, East, South, West, None }
 
+    public bool endWalkingAnim = true;
+
     //public bool shouldFlip = false;
 
     //private Animator animator;
@@ -30,6 +33,7 @@ public class PlayerController : PhysicsObject
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.flipX = false;
         speed = maxSpeed;
+        anim = this.gameObject.GetComponent<Animator>();
         // animator = GetComponent<Animator>();
     }
 
@@ -42,6 +46,7 @@ public class PlayerController : PhysicsObject
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
+            
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -50,20 +55,41 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
-        if (move.x > 0f)
+
+        if(velocity.y > 0)
+        {
+            //anim.SetFloat("Speed", 0f);
+            anim.SetBool("IsJumping", true);
+        }
+        else if (velocity.y < 0)
+        {
+            anim.SetBool("IsFalling", true);
+            anim.SetBool("IsJumping", false);
+        }
+        else if (move.x == 0f)
+        {
+            anim.SetFloat("Speed", -1f);
+            anim.SetBool("IsFalling", false);
+            anim.SetBool("IsJumping", false);
+        }
+
+        else if (move.x > 0f)
         {
             flipSprite = false;
+            anim.SetFloat("Speed", Mathf.Abs(move.x));
+            anim.SetBool("IsFalling", false);
+            anim.SetBool("IsJumping", false);
         }
         else if (move.x < 0f)
         {
             flipSprite = true;
+            anim.SetFloat("Speed", Mathf.Abs(move.x));
+            anim.SetBool("IsFalling", false);
+            anim.SetBool("IsJumping", false);
         }
         spriteRenderer.flipX = flipSprite;
-        /*
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-        */
         targetVelocity = move * speed;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -176,4 +202,15 @@ public class PlayerController : PhysicsObject
         return Vector2.zero;
 
     }
+
+    public void playWalkingAnimation()
+    {
+        
+    }
+
+    public bool EndWalkingAnimation()
+    {
+        return endWalkingAnim = true;
+    }
+
 }
