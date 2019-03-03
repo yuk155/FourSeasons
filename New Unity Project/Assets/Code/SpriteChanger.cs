@@ -17,8 +17,9 @@ public class SpriteChanger : MonoBehaviour
     public Texture2D[] spriteArray;
     SpriteRenderer spriteRenderer;
 
-    public Texture2D temp2; 
+    public Texture2D temp2;
 
+    
     public string path;
     void Awake()
     {
@@ -32,8 +33,7 @@ public class SpriteChanger : MonoBehaviour
             var temp = Resources.Load(path);
             spriteArray[i] = Resources.Load(path) as Texture2D;
         }
-       
-
+        
     }
 
     // Update is called once per frame
