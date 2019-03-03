@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Snow
   - Ice
+  - Water
+  - Water Edge
   layers:
   - Default
   - TransparentFX
