@@ -13,26 +13,27 @@ public class UpdateSprite : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider;
+
+    private int randomSprite;
     void Start()
     {
         loader = GameObject.Find(blockType.ToString() + "Loader");
         spriteChanger = loader.GetComponent<SpriteChanger>();
 
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        int randomSprite = Random.Range(0, spriteChanger.spriteArray.Length);
+        randomSprite = Random.Range(0, spriteChanger.spriteArray.Length);
         Texture2D texture = spriteChanger.spriteArray[randomSprite];
         spriteRenderer.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
 
         if (blockType == Block.Grass)
         {
-            boxCollider = this.gameObject.GetComponent<BoxCollider2D>();
-            if (randomSprite == 0)
+            if (spriteChanger.season == "Spring")
             {
-                boxCollider.offset.Set(0f, -0.01f);
+                setOffset(-0.07f, 0.187f);
             }
-            else
+            else if (spriteChanger.season == "Fall" || spriteChanger.season == "Summer")
             {
-                boxCollider.offset.Set(0f, -0.06f);
+                setOffset(-0.06f, 0.157f);
             }
         }
     }
@@ -41,5 +42,19 @@ public class UpdateSprite : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setOffset(float colliderOffset, float positionOffset)
+    {
+        boxCollider = this.gameObject.GetComponent<BoxCollider2D>();
+        if (randomSprite == 0)
+        {
+            boxCollider.offset = new Vector2(0f, -0.01f);
+        }
+        else
+        {
+            boxCollider.offset = new Vector2(0f, colliderOffset);
+            this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + positionOffset);
+        }
     }
 }

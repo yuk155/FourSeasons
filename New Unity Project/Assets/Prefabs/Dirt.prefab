@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2816475903407684883
 Transform:
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockType: 0
   loader: {fileID: 0}
+  boxCollider: {fileID: 0}
 --- !u!50 &2816475903407684884
 Rigidbody2D:
   serializedVersion: 4
