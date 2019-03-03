@@ -34,7 +34,8 @@ public class UpdateSprite : MonoBehaviour
             }
             else if (spriteChanger.season == "Fall" || spriteChanger.season == "Summer")
             {
-                setOffset(-0.06f, 0.157f);
+                //setOffset(-0.06f, 0.157f);
+                setOffset(-0.06f, 0.1564f);
             }
         }
     }
