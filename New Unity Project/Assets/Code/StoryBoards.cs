@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,6 +20,7 @@ public class StoryBoards : MonoBehaviour
     public int childfont = 30;
     public int childsadfont = 24;
     public int parentfont = 36;
+    public AudioMixer audioMixer;
 
     private void Start()
     {
@@ -27,8 +29,14 @@ public class StoryBoards : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.anyKeyDown && panel == 5)
         {
+             float musicVolume;
+            audioMixer.GetFloat("MusicVolume", out musicVolume);
+            Debug.Log(musicVolume);
+            Debug.Log(1+(musicVolume/80));
+            ASource.volume = 1+(musicVolume/80);
             ASource.clip = AClip;
             ASource.Play();
             //Play the first scene
