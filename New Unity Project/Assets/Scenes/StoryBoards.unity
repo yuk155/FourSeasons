@@ -364,6 +364,10 @@ MonoBehaviour:
   TextM: {fileID: 1215644211}
   AClip: {fileID: 8300000, guid: 7773695a6bc9a3b4cad5cecd284c1cf6, type: 3}
   ASource: {fileID: 526062842}
+  childfont: 30
+  childsadfont: 24
+  parentfont: 36
+  audioMixer: {fileID: 24100000, guid: 69c45753ddb4b9443b375ab75229a3ca, type: 2}
 --- !u!114 &1215644211
 MonoBehaviour:
   m_ObjectHideFlags: 0

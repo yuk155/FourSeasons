@@ -24,4 +24,9 @@ public class MainMenuButton : MonoBehaviour
     {
         SceneManager.LoadScene("StoryBoards");
     }
+
+    public void goToSettings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
 }
