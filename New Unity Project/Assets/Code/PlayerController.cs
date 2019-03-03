@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : PhysicsObject
 {
     private SpriteRenderer spriteRenderer;
+    public float waterMoveSpeed = 4;
     public float snowMoveSpeed = 3;
     public float iceSlideSpeed = 7;
     public float maxSpeed = 7;
@@ -15,6 +16,9 @@ public class PlayerController : PhysicsObject
 
 
     public bool flipSprite;
+
+    private WaterBlock waterBlock;
+    enum Direction { North, East, South, West, None }
 
     //public bool shouldFlip = false;
 
@@ -46,7 +50,7 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
-        if(move.x > 0f)
+        if (move.x > 0f)
         {
             flipSprite = false;
         }
@@ -77,8 +81,8 @@ public class PlayerController : PhysicsObject
         }
         else
         {
-            rb2d.angularVelocity = 0f;
-            rb2d.velocity = Vector2.zero;
+            //Reset Ice slide to 0
+            stopVelocity();
         }
     }
 
@@ -93,18 +97,86 @@ public class PlayerController : PhysicsObject
         {
             speed = snowMoveSpeed;
         }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Snow")
-        {  
+        if (collision.gameObject.tag == "Snow")
+        {
             speed = maxSpeed;
         }
         if (collision.gameObject.tag == "Ice")
         {
-            Debug.Log("Ice Exit");
-            
+
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Water")
+        {
+            waterBlock = collider.gameObject.GetComponent<WaterBlock>();
+            waterPush(waterBlock);
+        }
+        if (collider.gameObject.tag == "Water Edge")
+        {
+            stopVelocity();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Water")
+        {
+            Debug.Log("Enter Water");
+            rb2d.angularVelocity = 0f;
+            //rb2d.velocity = Vector2.zero;
+            //gravityModifier = 1f;
+            // waterBlock = collider.gameObject.GetComponent<WaterBlock>();
+            waterPush(waterBlock);
+        }
+        if(collider.gameObject.tag == "Water Edge")
+        {
+            Debug.Log("Enter Water Edge");
+
+            stopVelocity();
+        }
+    }
+
+    private void stopVelocity()
+    {
+        rb2d.angularVelocity = 0f;
+        rb2d.velocity = Vector2.zero;
+        gravityModifier = 1f;
+    }
+
+    private void waterPush(WaterBlock waterBlock)
+    {
+        
+        Vector2 waterDirection = directionToVector(waterBlock.direction);
+        gravityModifier = -0.05f;
+        rb2d.AddForce(new Vector2(waterMoveSpeed * waterDirection.x, waterMoveSpeed * waterDirection.y));
+    }
+
+    
+
+    private Vector2 directionToVector(WaterBlock.Direction direction)
+    {
+        switch (direction)
+        {
+            case WaterBlock.Direction.Up:
+                return Vector2.up;
+            case WaterBlock.Direction.Down:
+                return Vector2.down;
+            case WaterBlock.Direction.Right:
+                return Vector2.right;
+            case WaterBlock.Direction.Left:
+                return Vector2.left;
+            case WaterBlock.Direction.None:
+                return Vector2.zero;
+        }
+        return Vector2.zero;
+
     }
 }
