@@ -129,7 +129,6 @@ public class PlayerController : PhysicsObject
     {
         if (collider.gameObject.tag == "Water")
         {
-            Debug.Log("Enter Water");
             rb2d.angularVelocity = 0f;
             //rb2d.velocity = Vector2.zero;
             //gravityModifier = 1f;
@@ -138,8 +137,6 @@ public class PlayerController : PhysicsObject
         }
         if(collider.gameObject.tag == "Water Edge")
         {
-            Debug.Log("Enter Water Edge");
-
             stopVelocity();
         }
     }
