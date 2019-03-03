@@ -108,7 +108,8 @@ public class PlayerController : PhysicsObject
         else
         {
             //Reset Ice slide to 0
-            stopVelocity();
+            rb2d.angularVelocity = 0f;
+            //stopVelocity();
         }
     }
 
