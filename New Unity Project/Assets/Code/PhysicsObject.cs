@@ -8,7 +8,7 @@ public class PhysicsObject : MonoBehaviour
     public float gravityModifier = 1f;
 
     protected Vector2 targetVelocity;
-    protected bool grounded;
+    public bool grounded;
     protected Vector2 groundNormal;
     protected Rigidbody2D rb2d;
     public Vector2 velocity;
