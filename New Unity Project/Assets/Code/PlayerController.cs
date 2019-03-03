@@ -15,7 +15,6 @@ public class PlayerController : PhysicsObject
 
     private float speed;
 
-
     public bool flipSprite;
 
     private WaterBlock waterBlock;
@@ -30,10 +29,12 @@ public class PlayerController : PhysicsObject
     // Use this for initialization
     void Awake()
     {
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.flipX = false;
         speed = maxSpeed;
         anim = this.gameObject.GetComponent<Animator>();
+        rb2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         // animator = GetComponent<Animator>();
     }
 
@@ -69,7 +70,7 @@ public class PlayerController : PhysicsObject
 
         if (move.x == 0f && grounded)
         {
-            anim.SetFloat("Speed", -1f);
+            anim.SetFloat("Speed", 0f);
             anim.SetBool("IsFalling", false);
             anim.SetBool("IsJumping", false);
 
@@ -110,8 +111,9 @@ public class PlayerController : PhysicsObject
         else
         {
             //Reset Ice slide to 0
-            rb2d.angularVelocity = 0f;
-            //stopVelocity();
+            //Debug.Log("Collision entered");
+            //rb2d.angularVelocity = 0f;
+            stopVelocity();
         }
     }
 
@@ -134,10 +136,6 @@ public class PlayerController : PhysicsObject
         if (collision.gameObject.tag == "Snow")
         {
             speed = maxSpeed;
-        }
-        if (collision.gameObject.tag == "Ice")
-        {
-
         }
     }
 
