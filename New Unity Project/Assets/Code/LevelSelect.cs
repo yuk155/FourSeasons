@@ -35,7 +35,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Spring1()
     {
-        SceneManager.LoadScene("Spring 1");
+        SceneManager.LoadScene("Spring New1");
     }
 
     public void Summer2()
