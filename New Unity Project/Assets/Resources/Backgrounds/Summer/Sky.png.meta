@@ -1,17 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 guid: 129135b89a0194147a3ab8bcf8aa79d4
-=======
-guid: 487a5ad129cb4d440ae50d6d00944979
->>>>>>> backgrounds spawn
-=======
-guid: 129135b89a0194147a3ab8bcf8aa79d4
->>>>>>> working parallax!
-=======
-guid: 129135b89a0194147a3ab8bcf8aa79d4
->>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}

@@ -26,19 +26,7 @@ public class ParallaxCamera : MonoBehaviour
 
     void Awake()
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         textureArray = new Texture2D[7];
-=======
-        textureArray = new Texture2D[6];
->>>>>>> backgrounds spawn
-=======
-        textureArray = new Texture2D[7];
->>>>>>> working parallax!
-=======
-        textureArray = new Texture2D[7];
->>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         scene = SceneManager.GetActiveScene();
         season = scene.name.Split(' ')[0];
         path = "Backgrounds/" + season + "/";
@@ -63,11 +51,6 @@ public class ParallaxCamera : MonoBehaviour
         temp = Resources.Load(path + "Sky");
         textureArray[5] = Resources.Load(path + "Sky") as Texture2D;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         textureArray[6] = Resources.Load(path + "Sun") as Texture2D;
         GameObject sun = new GameObject();
 
@@ -117,111 +100,21 @@ public class ParallaxCamera : MonoBehaviour
     void Start()
     {
 
-<<<<<<< HEAD
-=======
-        player = GameObject.Find("Teddy").gameObject.transform;
-        //HARDCODED THINGS ARE BAD
-=======
-        textureArray[6] = Resources.Load(path + "Sun") as Texture2D;
-        GameObject sun = new GameObject();
-
->>>>>>> working parallax!
-        float zLocation = 10;
-        float scale = 10;
-        sun.name = "sun";
-        sun.AddComponent<SpriteRenderer>();
-        spriteRenderer = sun.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Sprite.Create(textureArray[6], new Rect(0, 0, textureArray[6].width, textureArray[6].height), new Vector3(0, 0, -10));
-        sun.transform.position = new Vector3(3.8f, -50.9f, 0f);
-        sun.transform.localScale = new Vector3(sun.transform.localScale.x * scale, sun.transform.localScale.y * scale, sun.transform.localScale.z);
-        sun.layer = 0;
-
-        player = GameObject.Find("Teddy").gameObject.transform;
-        //HARDCODED THINGS ARE BAD
-        
-        for (int i = 0; i < 6; i++)
-        {
-            GameObject empty = new GameObject();
-            empty.name = "Parent";
-            empty.AddComponent<SpriteRenderer>();
-            spriteRenderer = empty.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = Sprite.Create(textureArray[i], new Rect(0, 0, textureArray[i].width, textureArray[i].height), new Vector3(0, 0, -10));
-            empty.transform.position = new Vector3(-29f, -29.5f, zLocation + i);
-            empty.transform.localScale = new Vector3(empty.transform.localScale.x * scale, empty.transform.localScale.y * scale, empty.transform.localScale.z);
-            empty.layer = 0;
-
-            backgrounds[i] = empty.transform;
-        }
-        
-        for(int i = 0; i < 6; i++)
-        {
-            GameObject empty = new GameObject();
-            empty.name = "Child";
-            empty.AddComponent<SpriteRenderer>();
-            spriteRenderer = empty.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = Sprite.Create(textureArray[i], new Rect(0, 0, textureArray[i].width, textureArray[i].height), new Vector3(0, 0, -10));
-            empty.transform.localScale = new Vector3(empty.transform.localScale.x * scale, empty.transform.localScale.y * scale, empty.transform.localScale.z);
-            empty.transform.position = new Vector3(-29f + spriteRenderer.bounds.size.x, -29.5f, zLocation + i);
-            empty.layer = 0;
-            empty.tag = "Child";
-        }
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-<<<<<<< HEAD
-        
->>>>>>> backgrounds spawn
-=======
-
->>>>>>> working parallax!
-=======
->>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         previousCamPos = player.position;
 
         parallaxScales = new float[backgrounds.Length];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> backgrounds spawn
-=======
-
->>>>>>> working parallax!
-=======
-
->>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         for (int i = 0; i < backgrounds.Length; i++)
         {
             parallaxScales[i] = backgrounds[i].position.z * -1;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> working parallax!
-=======
->>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         int index = 0;
         foreach (GameObject child in GameObject.FindGameObjectsWithTag("Child"))
         {
             child.transform.parent = backgrounds[index];
             index++;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        
->>>>>>> backgrounds spawn
-=======
->>>>>>> working parallax!
-=======
->>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
     }
 
     // Update is called once per frame
