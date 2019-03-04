@@ -102,7 +102,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   waterMoveSpeed: 3
   snowMoveSpeed: 3
-  iceSlideSpeed: 15
+  iceSlideSpeed: 13
   maxSpeed: 6
   jumpTakeOffSpeed: 15
   move: {x: 0, y: 0}
