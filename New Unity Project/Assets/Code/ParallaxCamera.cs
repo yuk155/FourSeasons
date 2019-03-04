@@ -54,15 +54,20 @@ public class ParallaxCamera : MonoBehaviour
         textureArray[6] = Resources.Load(path + "Sun") as Texture2D;
         GameObject sun = new GameObject();
 
+
         float zLocation = 10;
         float scale = 10;
-        sun.name = "sun";
-        sun.AddComponent<SpriteRenderer>();
-        spriteRenderer = sun.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Sprite.Create(textureArray[6], new Rect(0, 0, textureArray[6].width, textureArray[6].height), new Vector3(0, 0, -10));
-        sun.transform.position = new Vector3(3.8f, -50.9f, 0f);
-        sun.transform.localScale = new Vector3(sun.transform.localScale.x * scale, sun.transform.localScale.y * scale, sun.transform.localScale.z);
-        sun.layer = 0;
+        if (season != "Winter")
+        {
+            sun.name = "sun";
+            sun.AddComponent<SpriteRenderer>();
+            spriteRenderer = sun.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = Sprite.Create(textureArray[6], new Rect(0, 0, textureArray[6].width, textureArray[6].height), new Vector3(0, 0, -10));
+            sun.transform.position = new Vector3(3.8f, -50.9f, 0f);
+            sun.transform.localScale = new Vector3(sun.transform.localScale.x * scale, sun.transform.localScale.y * scale, sun.transform.localScale.z);
+            sun.layer = 0;
+        }
+       
 
         player = GameObject.Find("Teddy").gameObject.transform;
         //HARDCODED THINGS ARE BAD
