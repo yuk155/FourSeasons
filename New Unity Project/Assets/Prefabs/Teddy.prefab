@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
+  grounded: 0
   velocity: {x: 0, y: 0}
   waterMoveSpeed: 4
   snowMoveSpeed: 3
@@ -106,6 +107,7 @@ MonoBehaviour:
   jumpTakeOffSpeed: 15
   move: {x: 0, y: 0}
   flipSprite: 0
+  canMove: 1
   endWalkingAnim: 1
 --- !u!50 &4426485318550224401
 Rigidbody2D:
@@ -126,7 +128,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &4426485318550224402
 BoxCollider2D:

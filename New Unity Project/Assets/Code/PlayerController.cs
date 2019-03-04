@@ -36,7 +36,6 @@ public class PlayerController : PhysicsObject
         spriteRenderer.flipX = false;
         speed = maxSpeed;
         anim = this.gameObject.GetComponent<Animator>();
-        rb2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         canMove = true; 
         // animator = GetComponent<Animator>();
     }

@@ -56,7 +56,7 @@ public class UpdateSprite : MonoBehaviour
         else
         {
             boxCollider.offset = new Vector2(0f, colliderOffset);
-            this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + positionOffset);
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + positionOffset, this.transform.position.z);
         }
     }
 }
