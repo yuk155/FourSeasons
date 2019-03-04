@@ -64,7 +64,7 @@ public class ParallaxCamera : MonoBehaviour
 
             empty.transform.position = new Vector3(empty.transform.position.x, empty.transform.position.y, zLocation + i);
             empty.transform.localScale = new Vector3(empty.transform.localScale.x * scale, empty.transform.localScale.y * scale, empty.transform.localScale.z);
-            
+            empty.layer = -1;
         }
     }
     
