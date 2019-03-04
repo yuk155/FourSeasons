@@ -23,7 +23,7 @@ public class UpdateSprite : MonoBehaviour
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
         randomSprite = Random.Range(0, spriteChanger.spriteArray.Length);
         Texture2D texture = spriteChanger.spriteArray[randomSprite];
-        texture.filterMode = FilterMode.Point;
+        //texture.filterMode = FilterMode.Point;
         spriteRenderer.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
 
         if (blockType == Block.Grass)

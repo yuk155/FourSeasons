@@ -66,7 +66,7 @@ public class PlayerController : PhysicsObject
                 //anim.SetFloat("Speed", 0f);
                 anim.SetBool("IsJumping", true);
             }
-            else if (velocity.y < 0 && !grounded)
+            else if (velocity.y < -0.2 && !grounded)
             {
                 anim.SetBool("IsFalling", true);
                 anim.SetBool("IsJumping", false);
