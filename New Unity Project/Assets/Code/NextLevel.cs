@@ -47,13 +47,15 @@ public class NextLevel : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        timer += Time.deltaTime;
-        if (timer > maxTime)
+        if(collider.gameObject.name == "Teddy")
         {
-            SceneManager.LoadScene(nextLevel);
+            timer += Time.deltaTime;
+            if (timer > maxTime)
+            {
+                SceneManager.LoadScene(nextLevel);
+            }
+
         }
-
-
         
     }
 }
