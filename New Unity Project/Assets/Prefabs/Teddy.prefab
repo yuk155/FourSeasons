@@ -100,9 +100,9 @@ MonoBehaviour:
   gravityModifier: 1
   grounded: 0
   velocity: {x: 0, y: 0}
-  waterMoveSpeed: 4
+  waterMoveSpeed: 3
   snowMoveSpeed: 3
-  iceSlideSpeed: 25
+  iceSlideSpeed: 15
   maxSpeed: 6
   jumpTakeOffSpeed: 15
   move: {x: 0, y: 0}
