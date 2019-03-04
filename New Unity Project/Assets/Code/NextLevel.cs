@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NextLevel : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class NextLevel : MonoBehaviour
     public string GameMessage = "";
     public string nextLevel;
 
-    float timer; 
+    float timer;
+
+    public Text text;
 
     PlayerController playerController;
 
@@ -21,6 +24,8 @@ public class NextLevel : MonoBehaviour
         {
             GameMessage = "Next Level";
         }
+
+        
     }
 
     // Update is called once per frame
@@ -36,6 +41,7 @@ public class NextLevel : MonoBehaviour
             playerController = collider.gameObject.GetComponent<PlayerController>();
             playerController.canMove = false;
             //ADD IN CODE TO DISPLAY THE NEXT MESSAGE USING CANVAS OBJECT
+            text.text = GameMessage;
         }
     }
 
