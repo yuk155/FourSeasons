@@ -80,19 +80,25 @@ public class PlayerController : PhysicsObject
 
             }
 
-            else if (move.x > 0f && grounded)
+            else if (move.x > 0f)
             {
                 flipSprite = false;
-                anim.SetFloat("Speed", Mathf.Abs(move.x));
-                anim.SetBool("IsFalling", false);
-                anim.SetBool("IsJumping", false);
+                if(grounded)
+                {
+                    anim.SetFloat("Speed", Mathf.Abs(move.x));
+                    anim.SetBool("IsFalling", false);
+                    anim.SetBool("IsJumping", false);
+                }
             }
-            else if (move.x < 0f && grounded)
+            else if (move.x < 0f)
             {
                 flipSprite = true;
-                anim.SetFloat("Speed", Mathf.Abs(move.x));
-                anim.SetBool("IsFalling", false);
-                anim.SetBool("IsJumping", false);
+                if(grounded)
+                {
+                    anim.SetFloat("Speed", Mathf.Abs(move.x));
+                    anim.SetBool("IsFalling", false);
+                    anim.SetBool("IsJumping", false);
+                }
             }
             spriteRenderer.flipX = flipSprite;
             targetVelocity = move * speed;
