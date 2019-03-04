@@ -28,6 +28,7 @@ public class ParallaxCamera : MonoBehaviour
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         textureArray = new Texture2D[7];
 =======
         textureArray = new Texture2D[6];
@@ -35,6 +36,9 @@ public class ParallaxCamera : MonoBehaviour
 =======
         textureArray = new Texture2D[7];
 >>>>>>> working parallax!
+=======
+        textureArray = new Texture2D[7];
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         scene = SceneManager.GetActiveScene();
         season = scene.name.Split(' ')[0];
         path = "Backgrounds/" + season + "/";
@@ -61,6 +65,9 @@ public class ParallaxCamera : MonoBehaviour
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         textureArray[6] = Resources.Load(path + "Sun") as Texture2D;
         GameObject sun = new GameObject();
 
@@ -110,6 +117,7 @@ public class ParallaxCamera : MonoBehaviour
     void Start()
     {
 
+<<<<<<< HEAD
 =======
         player = GameObject.Find("Teddy").gameObject.transform;
         //HARDCODED THINGS ARE BAD
@@ -169,12 +177,15 @@ public class ParallaxCamera : MonoBehaviour
 =======
 
 >>>>>>> working parallax!
+=======
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         previousCamPos = player.position;
 
         parallaxScales = new float[backgrounds.Length];
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
         
@@ -182,14 +193,20 @@ public class ParallaxCamera : MonoBehaviour
 =======
 
 >>>>>>> working parallax!
+=======
+
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         for (int i = 0; i < backgrounds.Length; i++)
         {
             parallaxScales[i] = backgrounds[i].position.z * -1;
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> working parallax!
+=======
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
         int index = 0;
         foreach (GameObject child in GameObject.FindGameObjectsWithTag("Child"))
         {
@@ -197,11 +214,14 @@ public class ParallaxCamera : MonoBehaviour
             index++;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         
 >>>>>>> backgrounds spawn
 =======
 >>>>>>> working parallax!
+=======
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
     }
 
     // Update is called once per frame

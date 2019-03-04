@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 20b8364e089949348ad842d0516f13fd
 =======
 guid: 3f46a165d59d4234d8fbcc8aa667f6a2
@@ -8,6 +9,9 @@ guid: 3f46a165d59d4234d8fbcc8aa667f6a2
 =======
 guid: 20b8364e089949348ad842d0516f13fd
 >>>>>>> working parallax!
+=======
+guid: 20b8364e089949348ad842d0516f13fd
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 50af6ac182f46a44e91b715fb66220e9
 =======
 guid: a65b990f12122304e9a67a1afdcd2fb0
@@ -8,6 +9,9 @@ guid: a65b990f12122304e9a67a1afdcd2fb0
 =======
 guid: 50af6ac182f46a44e91b715fb66220e9
 >>>>>>> working parallax!
+=======
+guid: 50af6ac182f46a44e91b715fb66220e9
+>>>>>>> f2d20f3164ac676f6bf0ddd893f755dd59aef126
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
