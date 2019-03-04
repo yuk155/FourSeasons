@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2816475903407684883}
   - component: {fileID: 2816475903407684880}
   - component: {fileID: 2816475903407684882}
-  - component: {fileID: 2816475903407684884}
   - component: {fileID: 2816475903407684885}
   m_Layer: 0
   m_Name: Dirt
@@ -97,27 +96,6 @@ MonoBehaviour:
   blockType: 0
   loader: {fileID: 0}
   boxCollider: {fileID: 0}
---- !u!50 &2816475903407684884
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2816475903407684881}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!61 &2816475903407684885
 BoxCollider2D:
   m_ObjectHideFlags: 0
