@@ -20,6 +20,8 @@ public class PlayerController : PhysicsObject
     private WaterBlock waterBlock;
     enum Direction { North, East, South, West, None }
 
+    public bool canMove = true; 
+
     public bool endWalkingAnim = true;
 
     //public bool shouldFlip = false;
@@ -35,63 +37,68 @@ public class PlayerController : PhysicsObject
         speed = maxSpeed;
         anim = this.gameObject.GetComponent<Animator>();
         rb2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        canMove = true; 
         // animator = GetComponent<Animator>();
     }
 
     protected override void ComputeVelocity()
     {
-        move = Vector2.zero;
-
-        move.x = Input.GetAxis("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if(canMove)
         {
-            velocity.y = jumpTakeOffSpeed;
-            
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            if (velocity.y > 0)
+            move = Vector2.zero;
+
+            move.x = Input.GetAxis("Horizontal");
+
+            if (Input.GetKeyDown(KeyCode.Space) && grounded)
             {
-                velocity.y = velocity.y * 0.5f;
+                velocity.y = jumpTakeOffSpeed;
+
             }
-        }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * 0.5f;
+                }
+            }
 
-        if(velocity.y > 0f)
-        {
-            //anim.SetFloat("Speed", 0f);
-            anim.SetBool("IsJumping", true);
-        }
-        else if (velocity.y < 0 && !grounded)
-        {
-            anim.SetBool("IsFalling", true);
-            anim.SetBool("IsJumping", false);
-        }
+            if (velocity.y > 0f)
+            {
+                //anim.SetFloat("Speed", 0f);
+                anim.SetBool("IsJumping", true);
+            }
+            else if (velocity.y < 0 && !grounded)
+            {
+                anim.SetBool("IsFalling", true);
+                anim.SetBool("IsJumping", false);
+            }
 
-        if (move.x == 0f && grounded)
-        {
-            anim.SetFloat("Speed", 0f);
-            anim.SetBool("IsFalling", false);
-            anim.SetBool("IsJumping", false);
+            if (move.x == 0f && grounded)
+            {
+                anim.SetFloat("Speed", 0f);
+                anim.SetBool("IsFalling", false);
+                anim.SetBool("IsJumping", false);
 
-        }
+            }
 
-        else if (move.x > 0f && grounded)
-        {
-            flipSprite = false;
-            anim.SetFloat("Speed", Mathf.Abs(move.x));
-            anim.SetBool("IsFalling", false);
-            anim.SetBool("IsJumping", false);
+            else if (move.x > 0f && grounded)
+            {
+                flipSprite = false;
+                anim.SetFloat("Speed", Mathf.Abs(move.x));
+                anim.SetBool("IsFalling", false);
+                anim.SetBool("IsJumping", false);
+            }
+            else if (move.x < 0f && grounded)
+            {
+                flipSprite = true;
+                anim.SetFloat("Speed", Mathf.Abs(move.x));
+                anim.SetBool("IsFalling", false);
+                anim.SetBool("IsJumping", false);
+            }
+            spriteRenderer.flipX = flipSprite;
+            targetVelocity = move * speed;
         }
-        else if (move.x < 0f && grounded)
-        {
-            flipSprite = true;
-            anim.SetFloat("Speed", Mathf.Abs(move.x));
-            anim.SetBool("IsFalling", false);
-            anim.SetBool("IsJumping", false);
-        }
-        spriteRenderer.flipX = flipSprite;
-        targetVelocity = move * speed;
+       
 
     }
 
