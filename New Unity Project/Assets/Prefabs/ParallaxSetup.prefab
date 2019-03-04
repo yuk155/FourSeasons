@@ -50,4 +50,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  smoothing: 10
+  smoothing: 1
+  player: {fileID: 0}
+  season: 
+  path: 
+  textureArray: []
+  spriteRenderer: {fileID: 0}

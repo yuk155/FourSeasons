@@ -8,6 +8,7 @@ TagManager:
   - Ice
   - Water
   - Water Edge
+  - Child
   layers:
   - Default
   - TransparentFX
