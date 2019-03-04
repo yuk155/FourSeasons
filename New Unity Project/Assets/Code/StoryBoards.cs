@@ -40,7 +40,7 @@ public class StoryBoards : MonoBehaviour
             ASource.clip = AClip;
             ASource.Play();
             //Play the first scene
-            //SceneManager.LoadScene();
+            SceneManager.LoadScene("Summer 1");
             panel += 1;
         }
         else if (Input.anyKeyDown && panel == 4)
