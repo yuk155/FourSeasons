@@ -114,6 +114,10 @@ public class PlayerController : PhysicsObject
             float iceMove = move.x;
             rb2d.AddForce(new Vector2(iceMove * iceSlideSpeed * 2, rb2d.velocity.y));
         }
+        if (collision.gameObject.tag == "Water Edge")
+        {
+            Debug.Log("water edge collision");
+        }
         else
         {
             //Reset Ice slide to 0
@@ -121,6 +125,7 @@ public class PlayerController : PhysicsObject
             //rb2d.angularVelocity = 0f;
             stopVelocity();
         }
+       
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -162,10 +167,10 @@ public class PlayerController : PhysicsObject
     {
         if (collider.gameObject.tag == "Water")
         {
-            rb2d.angularVelocity = 0f;
+            //rb2d.angularVelocity = 0f;
             //rb2d.velocity = Vector2.zero;
             //gravityModifier = 1f;
-            // waterBlock = collider.gameObject.GetComponent<WaterBlock>();
+            waterBlock = collider.gameObject.GetComponent<WaterBlock>();
             waterPush(waterBlock);
         }
         if(collider.gameObject.tag == "Water Edge")
@@ -183,9 +188,20 @@ public class PlayerController : PhysicsObject
 
     private void waterPush(WaterBlock waterBlock)
     {
-        
+        if (waterBlock.direction == WaterBlock.Direction.Left || waterBlock.direction == WaterBlock.Direction.Right)
+        {
+            gravityModifier = 1f;
+        }
+        else if (waterBlock.direction == WaterBlock.Direction.Down)
+        {
+            gravityModifier = 2f;
+        }
+        else
+        {
+            gravityModifier = -0.05f;
+        }
+
         Vector2 waterDirection = directionToVector(waterBlock.direction);
-        gravityModifier = -0.05f;
         rb2d.AddForce(new Vector2(waterMoveSpeed * waterDirection.x, waterMoveSpeed * waterDirection.y));
     }
 
