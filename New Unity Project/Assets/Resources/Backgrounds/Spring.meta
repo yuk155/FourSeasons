@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 2d044b0742a48be4ea789178ec1ee7d1
 =======
 guid: db37ab198059e914f83d5fcc36781064
 >>>>>>> backgrounds spawn
+=======
+guid: 2d044b0742a48be4ea789178ec1ee7d1
+>>>>>>> working parallax!
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
