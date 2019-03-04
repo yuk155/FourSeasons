@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 65ffd8b74a59b6848838e3c4f2f85fb9
+=======
+guid: d0e0968ce5119f54eb646b719acd1da5
+>>>>>>> backgrounds spawn
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}

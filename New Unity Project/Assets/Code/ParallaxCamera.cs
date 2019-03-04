@@ -26,7 +26,11 @@ public class ParallaxCamera : MonoBehaviour
 
     void Awake()
     {
+<<<<<<< HEAD
         textureArray = new Texture2D[7];
+=======
+        textureArray = new Texture2D[6];
+>>>>>>> backgrounds spawn
         scene = SceneManager.GetActiveScene();
         season = scene.name.Split(' ')[0];
         path = "Backgrounds/" + season + "/";
@@ -51,6 +55,7 @@ public class ParallaxCamera : MonoBehaviour
         temp = Resources.Load(path + "Sky");
         textureArray[5] = Resources.Load(path + "Sky") as Texture2D;
 
+<<<<<<< HEAD
         textureArray[6] = Resources.Load(path + "Sun") as Texture2D;
         GameObject sun = new GameObject();
 
@@ -100,21 +105,52 @@ public class ParallaxCamera : MonoBehaviour
     void Start()
     {
 
+=======
+        player = GameObject.Find("Teddy").gameObject.transform;
+        //HARDCODED THINGS ARE BAD
+        float zLocation = 10;
+        float scale = 10;
+        for (int i = 0; i < 6; i++)
+        {
+            GameObject empty = new GameObject();
+            empty.AddComponent<SpriteRenderer>();
+            spriteRenderer = empty.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = Sprite.Create(textureArray[i], new Rect(0, 0, textureArray[i].width, textureArray[i].height), new Vector3(0, 0, -10));
+
+            empty.transform.position = new Vector3(empty.transform.position.x, empty.transform.position.y, zLocation + i);
+            empty.transform.localScale = new Vector3(empty.transform.localScale.x * scale, empty.transform.localScale.y * scale, empty.transform.localScale.z);
+            
+        }
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+>>>>>>> backgrounds spawn
         previousCamPos = player.position;
 
         parallaxScales = new float[backgrounds.Length];
 
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> backgrounds spawn
         for (int i = 0; i < backgrounds.Length; i++)
         {
             parallaxScales[i] = backgrounds[i].position.z * -1;
         }
+<<<<<<< HEAD
         int index = 0;
         foreach (GameObject child in GameObject.FindGameObjectsWithTag("Child"))
         {
             child.transform.parent = backgrounds[index];
             index++;
         }
+=======
+        
+>>>>>>> backgrounds spawn
     }
 
     // Update is called once per frame
